@@ -38,4 +38,12 @@ public class RSVPRepository {
         int replaced = template.update(Query.ADD_RSVP, email, phone, confirmDate, comments);
         return replaced > 0;
     }
+
+    public int count() {
+        SqlRowSet rs = template.queryForRowSet(Query.COUNT);
+        if (!rs.next()) {
+            return 0;
+        }
+        return rs.getInt("count");
+    }
 }

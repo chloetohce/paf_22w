@@ -52,7 +52,8 @@ public class RSVPController {
                 return new ResponseEntity<>("Error adding RSVP for %s. ".formatted(entity.get("email")), HttpStatusCode.valueOf(422));
             } else {
                 URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .pathSegment("/rsvp")
+                    .pathSegment("api")
+                    .pathSegment("rsvp")
                     .queryParam("q", entity.get("name"))
                     .build()
                     .toUri();
@@ -63,6 +64,12 @@ public class RSVPController {
             return ResponseEntity.badRequest().body("Error parsing date.");
         }
     }
+
+    @GetMapping(path = "/rsvp/count", produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> count() {
+        return ResponseEntity.ok(Integer.toString(service.count()));
+    }
+    
     
     
 }

@@ -14,4 +14,8 @@ public class Query {
             replace into rsvp(email, phone, confirmDate, comments)
                 values (?, ?, ?, ?);
             """;
+
+    public static final String COUNT = """
+            select count(*) as count from rsvp;
+            """;
 }

@@ -56,4 +56,8 @@ public class RSVPService {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return repository.addRSVP(data.get("email"), data.get("phone"), sdf.parse(data.get("confirmDate")), data.get("comments"));
     }
+
+    public int count() {
+        return repository.count();
+    }
 }
